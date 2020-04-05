@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>homework14</title>
+</head>
+<body>
+
+<button id="fb">FB</button>
+<button id="resetFb">Reset FB</button>
+<br>
+<button id="vk">VK</button>
+<button id="resetVk">Reset VK</button>
+<br>
+
+<script>
+
+let isReset = false;
+	function makeCounter(counter = 0, step = 1) {
+
+		return function() {
+			if(isReset === false) {
+				return counter += step;
+			} else {
+				isReset = false;
+				return counter = 0;
+			}	
+		}
+	}
+
+const fbCounter = makeCounter();
+const vkCounter = makeCounter();
+
+const $fbButton = document.querySelector('#fb');
+const $vkButton = document.querySelector('#vk');
+const $resetFbButton = document.querySelector('#resetFb');
+const $resetVkButton = document.querySelector('#resetVk');
+
+$fbButton.addEventListener('click', () => {
+	console.log('FB likes:', fbCounter());
+})
+
+$vkButton.addEventListener('click', () => {
+	console.log('VK likes:', vkCounter());
+})
+
+$resetFbButton.addEventListener('click', () => {
+	isReset = true;
+	console.log('FB likes:', fbCounter());
+})
+
+$resetVkButton.addEventListener('click', () => {
+	isReset = true;
+	console.log('Vk likes:', vkCounter());
+})
+
+
+function getSum() {
+	result = 0;
+		return function(num){
+			result += num;
+			return result;
+		}
+}
+
+const sum = getSum();
+console.log('sum:', sum());
+
+</script>
+
+</body>
+</html>
