@@ -15,10 +15,9 @@
 
 <script>
 
-let isReset = false;
 	function makeCounter(counter = 0, step = 1) {
 
-		return function() {
+		return function(isReset) {
 			if(isReset === false) {
 				return counter += step;
 			} else {
@@ -37,21 +36,19 @@ const $resetFbButton = document.querySelector('#resetFb');
 const $resetVkButton = document.querySelector('#resetVk');
 
 $fbButton.addEventListener('click', () => {
-	console.log('FB likes:', fbCounter());
+	console.log('FB likes:', fbCounter(false));
 })
 
 $vkButton.addEventListener('click', () => {
-	console.log('VK likes:', vkCounter());
+	console.log('VK likes:', vkCounter(false));
 })
 
 $resetFbButton.addEventListener('click', () => {
-	isReset = true;
-	console.log('FB likes:', fbCounter());
+	console.log('FB likes:', fbCounter(true));
 })
 
 $resetVkButton.addEventListener('click', () => {
-	isReset = true;
-	console.log('Vk likes:', vkCounter());
+	console.log('Vk likes:', vkCounter(true));
 })
 
 
