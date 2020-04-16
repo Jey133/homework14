@@ -21,7 +21,6 @@
 			if(isReset === false) {
 				return counter += step;
 			} else {
-				isReset = false;
 				return counter = 0;
 			}	
 		}
@@ -52,8 +51,7 @@ $resetVkButton.addEventListener('click', () => {
 })
 
 
-function getSum() {
-	result = 0;
+function getSum(result = 0) {
 		return function(num){
 			result += num;
 			return result;
